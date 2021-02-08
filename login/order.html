@@ -12,7 +12,6 @@
     var orderList = [];
     var favoriteList = []
     var pizzaSelection;
-    var crustSelect;
     var brocolliCheckFlag, garlicCheckFlag, onionCheckFlag;
     var pizzaBaseSubtotal = 0;
     var toppingSubtotal = 0;
@@ -22,6 +21,7 @@
             switch ($(this).val()) {
               case 'pepperoni':
                 pizzaSelection = 'pepperoni';
+                pizzaBaseSubtotal = 100
                 document.getElementById("pizza_name_display").innerHTML = 
                       `<label id="pizza_selection_label">You Select: Pepperoni&nbsp;&nbsp;&nbsp;$${pizzaBaseSubtotal}</label>`;
                       updateSum();
