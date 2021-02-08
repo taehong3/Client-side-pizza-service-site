@@ -1,0 +1,24 @@
+.carousel .carousel-item {
+    width: 100%;
+    height: 700px;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel .carousel-item:first-of-type {
+    background-image: url("./images/pepe_pizza.jpg");
+}
+
+.carousel .carousel-item:nth-of-type(2) {
+    background-image: url("./images/homemade_pizza.jpg");
+}
+
+.carousel .carousel-item:last-of-type {
+    background-image: url("./images/combo_pizza.jpg");
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    width: 50px;
+    height: 50px;
+}
+

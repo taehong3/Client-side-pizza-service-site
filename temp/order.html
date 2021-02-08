@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pizza Assignment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+      let brocolliCounter = 0;
+      let onionCounter = 0;
+      let myPizza="";
+      function mypizzaselect() {
+        document.getElementById("pizzaoption").value = myPizza;
+         updateTally();
+      }
+
+      function BrocolliAddclick() {
+        brocolliCounter++;
+        document.getElementById("brocolliAmount").value = brocolliCounter;
+        updateTally();
+      }
+
+      function BrocolliSubclick() {
+        brocolliCounter--;
+        document.getElementById("brocolliAmount").value = brocolliCounter;
+        updateTally();
+      }
+      function OnionAddclick() {
+        onionCounter++;
+        document.getElementById("onionAmount").value = onionCounter;
+        updateTally();
+      }
+
+      function OnionSubclick() {
+        onionCounter--;
+        document.getElementById("onionAmount").value = onionCounter;
+        updateTally();
+      }
+      function updateTally() {
+        total = brocolliCounter * 100 + brocolliCounter * 200;
+        total2 = onionCounter * 100 + onionCounter * 200;
+        total3 = 1000;
+        if(brocolliCounter > 0) {
+          document.getElementById("tallyResult").innerHTML =`Brocolli: ${brocolliCounter} * 100 = ${total}`;
+        }
+        
+        document.getElementById("tallyResult2").innerHTML =`Onion: ${onionCounter} * 200 = ${total2}`;
+        document.getElementById("tallypizza").innerHTML =`Pizza: ${myPizza} = ${total3}`
+        document.getElementById("total").innerHTML = total+total2+total3;
+      }
+  
+  
+  
+  
+  
+  </script>
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  #title{
+      background-color: #f38342;
+    }
+    #header{
+      font-style: italic;
+      font-weight: 800;
+    }
+    .nav-item{
+      font-style: italic;
+      font-weight: 400;
+      padding: 0px 40px;
+    }
+
+    .orderSection {
+    display: flex;
+    padding: 30px;
+    } 
+
+
+  </style>    
+</head>
+<body>
+
+<div id = "title"class="jumbotron text-center" style="margin-bottom:0">
+  <h1 id="header">Pizza House</h1>
+  <p>Welcome to the pizza house</p> 
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center ">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link"  href="Home.html" id="Home">   Home   </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link"  href="menu.html" id="Menu">   Menu   </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link"  href="order.html" id="Order">Order</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-link"  href="login.html" id="Login">Login</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="register.html" id="Register">Register</a>
+    </li>
+  </ul>
+</nav>
+
+
+<div>
+<label for="pizza">Choose a Pizza:</label>
+<select name="pizzaoption" id="pizzaoption" onchange="mypizzaselect()">
+  <option value="Pepperoni"> peperoni</option>
+  <option value="Cheese">Cheese</option>
+  <option value="Cheese2">Cheese2</option>
+  <option value="Cheese3">Cheese3</option>
+</select>
+</div>
+
+<div class="orderSection">
+  <button type="button" id="butt" onclick="BrocolliSubclick()">-</button>
+  <button type="button" id="butt" onclick="BrocolliAddclick()">+</button>
+  <label for="BrocolliAdd">Brocolli:</label>
+  <input type="text" id="brocolliAmount" value="0">
+   
+</div>
+<div class="orderSection">
+  <button type="button" id="butt" onchange="OnionSubclick()">-</button>
+  <button type="button" id="butt" onclick="OnionAddclick()">+</button>
+  <label for="OnionAdd">Onion:</label>
+  <input type="text" id="onionAmount" value="0">
+</div>
+<div class="orderSection">
+  <label for="tally">Your order: </label>
+  <div><p id = "tallypizza"></p>
+  <div><p id="tallyResult"></p>
+  <div><p id="tallyResult2"></p>
+  <p id="total"></p></br>
+</div>
