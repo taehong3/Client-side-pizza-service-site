@@ -9,6 +9,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script type="text/javascript">
+    var orderList = [];
+    var favoriteList = []
     var pizzaSelection;
     var pizzaSize;
     var crustSelect;
@@ -315,6 +317,7 @@
         }
 
         function addToCart() {
+          document.getElementById("cart").innerHTML = "";
           var orderObject = {};
           
           orderObject.pizza = pizzaSelection;
@@ -322,12 +325,20 @@
           if(garlicCheckFlag){orderObject.garlicCheck = true}else{orderObject.garlicCheck = false}
           if(onionCheckFlag){orderObject.onionCheck = true}else{orderObject.onionCheck = false}
           orderObject.totalPrice = pizzaBaseSubtotal + toppingSubtotal;
+          orderObject.favoriteName = document.getElementById("favName").value;
+          orderList.push(orderObject);
+          // Construct string for localStorage
 
-          // Test to see if the JSON object is successfully constructed
-          orderObjectPrint = document.createElement('p');
-          orderObjectPrint.innerHTML = JSON.stringify(orderObject);
-          cart = document.getElementById('cart');
-          cart.appendChild(orderObjectPrint);
+          localStorage.setItem("orderList",JSON.stringify(orderList));
+          // localStorage.clear();
+          // Test to see if the list of order JSON object is successfully constructed
+
+          orderList.forEach(function(arrayItem) {
+            orderObjectPrint = document.createElement('p');
+            orderObjectPrint.innerHTML = JSON.stringify(arrayItem, null, 4);
+            cart = document.getElementById('cart');
+            cart.appendChild(orderObjectPrint);
+          });
         }
 
         
@@ -632,6 +643,8 @@
 
 </div>
 <button type="button" id="addToCartButton" name="Add to Cart" onclick="addToCart()">Add to Cart</button>
+<button type="button" id="addToFavoriteButton" name="Add to Favorite" onclick="addToFavorite()">Add to Favorite</button>
+<input type="text" id="favName" placeholder="Name of your favorite">
 <div id="subTotal" class="orderSection">
   <label for="subTotalLabel">Topping subtotal:</label>
   <input type="text" id="subtotalAmount" value="0">
